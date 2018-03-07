@@ -28,43 +28,50 @@ function UsersViewModel() {
     }
 
     self.logout = function() {
-        users_api.logout();
+        var api = new Sumbroker();
+        api.logout(function() {
+            location.href = 'index.html';
+        });
     };
 
     self.createUser = function() {
+        var api = new Sumbroker();
         var params = {
             name: self.name(),
             username: self.username(),
             email: self.email(),
             password: self.password(),
         };
-        users_api.createUser(params, function(r) {
+        api.createUser(params, function(r) {
             self.getUsers();
             self.cancelEdition();
         });
     }
 
     self.getUsers = function() {
-        users_api.getUsers({}, function(r) {
+        var api = new Sumbroker();
+        api.getUsers({}, function(r) {
             self.users(r);
         })
     }
 
     self.updateUser = function() {
+        var api = new Sumbroker();
         var params = {
             name: self.name(),
             username: self.username(),
             email: self.email(),
             password: self.password(),
         };
-        users_api.updateUser(self.updatingUser().id, params, function() {
+        api.updateUser(self.updatingUser().id, params, function() {
             self.getUsers();
             self.cancelEdition();
         });
     }
 
     self.deleteUser = function(user) {
-        users_api.deleteUser(user.id, function() {
+        var api = new Sumbroker();
+        api.deleteUser(user.id, function() {
             self.getUsers();
         });
     }

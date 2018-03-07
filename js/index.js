@@ -6,11 +6,12 @@ function LoginViewModel() {
 
     self.doLogin = function() {
 
+        var api = new Sumbroker();
         var params = {
             username: self.username(),
             password: self.password()
         }
-        users_api.login(params, function(r) {
+        api.login(params, function(r) {
             location.href = 'users.html';
         });
     }
