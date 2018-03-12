@@ -12,7 +12,7 @@ function LoginViewModel() {
             password: self.password()
         }
         api.login(params, function(r) {
-            location.href = 'users.html';
+            location.href = 'users/users.html';
         });
     }
 }
