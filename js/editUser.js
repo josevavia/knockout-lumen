@@ -1,13 +1,16 @@
-function UsersViewModel() {
+function EditUserViewModel() {
     var self = this;
 
-    self.users = ko.observableArray();
+    self.id = ko.observable();
+    self.name = ko.observable();
+    self.username = ko.observable();
+    self.email = ko.observable();
 
     self.currentUser = ko.observable();
 
     self.init = function() {
         self.checkUser();
-        self.getUsers();
+        self.getUser();
     }
 
     // check connected user
@@ -27,23 +30,26 @@ function UsersViewModel() {
         });
     };
 
-    self.getUsers = function() {
+    self.getUser = function() {
         var api = new Sumbroker();
-        api.getUsers({}, function(r) {
-            self.users(r);
+        var user_id = (new URLSearchParams(window.location.search)).get('idUser');
+        api.getUser(user_id, function(r) {
+            self.id(r.id);
+            self.name(r.name);
+            self.username(r.username);
+            self.email(r.email);
         });
     }
 
-    self.showDeleteUser = function(user) {
-        if (confirm('Are you sure?')) {
-            self.deleteUser(user);
-        }
-    }
-
-    self.deleteUser = function(user) {
+    self.updateUser = function() {
         var api = new Sumbroker();
-        api.deleteUser(user.id, function() {
-            self.getUsers();
+        var params = {
+            name: self.name(),
+            username: self.username(),
+            email: self.email(),
+        };
+        api.updateUser(self.id(), params, function() {
+            location.href = 'users.html';
         });
     }
 
@@ -55,4 +61,4 @@ function UsersViewModel() {
 }
 
 // Activates knockout.js
-ko.applyBindings(new UsersViewModel());
+ko.applyBindings(new EditUserViewModel());

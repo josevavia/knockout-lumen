@@ -26,17 +26,28 @@
 		</tr>
 		</thead>
 		<tbody data-bind="foreach: users">
-			<tr data-bind="css: { 'text-primary' : id == $parent.currentUser().id }">
-				<td><span data-bind="text: id"></span></td>
-				<td><span data-bind="text: name"></span></td>
+			<tr>
+				<td>
+					<span class="glyphicon" data-bind="
+						css: {
+							'glyphicon-ok-circle' : id == $parent.currentUser().id,
+							'glyphicon-remove-circle' : id != $parent.currentUser().id
+						}"></span>
+					<span data-bind="text: id"></span>
+				</td>
+				<td>
+					<a data-bind="attr: {href : 'user.html?idUser='+id}">
+						<span data-bind="text: name"></span>
+					</a>
+				</td>
 				<td><span data-bind="text: username"></span></td>
 				<td><span data-bind="text: email"></span></td>
 				<td><span data-bind="text: created_at"></span></td>
 				<td><span data-bind="text: updated_at"></span></td>
 				<td>
-					<button class="btn btn-primary" data-bind="click : $parent.showEditUser">
+					<a class="btn btn-primary" data-bind="attr: {href : 'editUser.html?idUser='+id}">
 						<span class="glyphicon glyphicon-pencil"></span> Edit
-					</button>
+					</a>
 					<button class="btn btn-danger" data-bind="click : $parent.showDeleteUser, visible: id != $parent.currentUser().id">
 						<span class="glyphicon glyphicon-trash"></span> Delete
 					</button>
@@ -45,20 +56,8 @@
 		</tbody>
 	</table>
 
-	<button class="btn btn-primary" data-bind="click: showCreateUser, visible: !creatingUser() && !updatingUser()">New user</button>
+	<a href="createUser.html" class="btn btn-primary">New user</a>
 
-	<div data-bind="visible: creatingUser() || updatingUser()">
-		<h2>Create new user</h2>
-		<form data-bind="submit: saveUser">
-			<input type="text" id="name" class="form-control" placeholder="Name" required autofocus data-bind="value: name">
-			<input type="text" id="username" class="form-control" placeholder="User name" required autofocus data-bind="value: username">
-			<input type="email" id="email" class="form-control" placeholder="Email" required data-bind="value: email">
-			<input type="password" id="password" class="form-control" placeholder="Password" required data-bind="value: password">
-
-			<button class="btn btn-primary" type="button" data-bind="click: cancelEdition">Cancel</button>
-			<button class="btn btn-primary" type="submit">Save</button>
-		</form>
-	</div>
 	<br />
 	<br />
 	<button class="btn btn-link" data-bind="click: logout">Logout</button>
