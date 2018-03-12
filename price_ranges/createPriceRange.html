@@ -11,24 +11,22 @@
 </head>
 
 <body class="text-center">
-	<form class="form-signin" data-bind="submit: doLogin, visible: currentUserId() == null">
-		<h1 class="h3 mb-3 font-weight-normal">Welcome!</h1>
+	<h1>Create new price_range</h1>
+	<form data-bind="submit: createPriceRange">
+		<input type="text" id="name" class="form-control" placeholder="Name" required autofocus data-bind="value: name">
+		<input type="text" id="description" class="form-control" placeholder="Description" required autofocus data-bind="value: description">
 
-		<input type="text" id="username" class="form-control" placeholder="User name" required autofocus data-bind="value: username">
-
-		<input type="password" id="password" class="form-control" placeholder="Password" required data-bind="value: password">
-		<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+		<br />
+		<a href="price_ranges.html" class="btn btn-primary">Cancel</a>
+		<button class="btn btn-primary" type="submit">Save</button>
 	</form>
-
-	<button class="btn btn-link" data-bind="click: logout, visible: currentUserId() > 0">Logout</button>
 	<br />
-
-	<a class="btn btn-default" href="users/users.html">Users</a>
-	<a class="btn btn-default" href="price_ranges/price_ranges.html">Price Ranges</a>
+	<br />
+	<a class="btn btn-link" href="../index.html">Index</a> <button class="btn btn-link" data-bind="click: logout">Logout</button>
 </body>
 
 <script type="text/javascript" src="http://127.0.0.1:9080/js/v1/api.js"></script>
-<script type="text/javascript" src="js/index.js"></script>
+<script type="text/javascript" src="js/createPriceRange.js"></script>
 
 </html>
 

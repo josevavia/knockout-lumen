@@ -1,18 +1,16 @@
-function CreateUserViewModel() {
+function PriceRangesViewModel() {
     var self = this;
 
-    self.name = ko.observable();
-    self.username = ko.observable();
-    self.email = ko.observable();
-    self.password = ko.observable();
+    self.price_ranges = ko.observableArray();
 
     self.currentUser = ko.observable();
 
     self.init = function() {
         self.checkUser();
+        self.getPriceRanges();
     }
 
-    // check connected user
+    // check connected price_range
     self.checkUser = function() {
         var user = JSON.parse(sessionStorage.getItem('user'));
         if (!user) {
@@ -29,16 +27,23 @@ function CreateUserViewModel() {
         });
     };
 
-    self.createUser = function() {
+    self.getPriceRanges = function() {
         var api = new Sumbroker();
-        var params = {
-            name: self.name(),
-            username: self.username(),
-            email: self.email(),
-            password: self.password(),
-        };
-        api.createUser(params, function(r) {
-            location.href = 'users.html';
+        api.getPriceRanges({}, function(r) {
+            self.price_ranges(r);
+        });
+    }
+
+    self.showDeletePriceRange = function(price_range) {
+        if (confirm('Are you sure?')) {
+            self.deletePriceRange(price_range);
+        }
+    }
+
+    self.deletePriceRange = function(price_range) {
+        var api = new Sumbroker();
+        api.deletePriceRange(price_range.id, function() {
+            self.getPriceRanges();
         });
     }
 
@@ -50,4 +55,4 @@ function CreateUserViewModel() {
 }
 
 // Activates knockout.js
-ko.applyBindings(new CreateUserViewModel());
+ko.applyBindings(new PriceRangesViewModel());

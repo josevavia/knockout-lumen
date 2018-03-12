@@ -4,6 +4,9 @@ function LoginViewModel() {
     self.username = ko.observable("admin");
     self.password = ko.observable("1234");
 
+    self.init = function() {
+    }
+
     self.doLogin = function() {
 
         var api = new Sumbroker();
@@ -15,6 +18,23 @@ function LoginViewModel() {
             location.href = 'users/users.html';
         });
     }
+
+    self.logout = function() {
+        var api = new Sumbroker();
+        api.logout(function() {
+            location.href = 'index.html';
+        });
+    };
+
+    self.currentUserId = function() {
+        let item = JSON.parse(sessionStorage.getItem('user'));
+        if (item) {
+            return item.id;
+        }
+        return null;
+    }
+
+    self.init();
 }
 
 // Activates knockout.js

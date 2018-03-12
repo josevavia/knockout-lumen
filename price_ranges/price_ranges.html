@@ -12,43 +12,29 @@
 
 <body class="text-center">
 
-	<h1>Users</h1>
-	<table class="table" data-bind="visible: users().length > 0">
+	<h1>PriceRanges</h1>
+	<table class="table" data-bind="visible: price_ranges().length > 0">
 		<thead>
 		<tr>
 			<td>Id</td>
 			<td>Name</td>
-			<td>Username</td>
-			<td>Email</td>
-			<td>Created at</td>
-			<td>Updated at</td>
-			<td>Operations</td>
+			<td>Description</td>
 		</tr>
 		</thead>
-		<tbody data-bind="foreach: users">
+		<tbody data-bind="foreach: price_ranges">
 			<tr>
+				<td><span data-bind="text: id"></span></td>
 				<td>
-					<span class="glyphicon" data-bind="
-						css: {
-							'glyphicon-ok-circle' : id == $parent.currentUser().id,
-							'glyphicon-remove-circle' : id != $parent.currentUser().id
-						}"></span>
-					<span data-bind="text: id"></span>
-				</td>
-				<td>
-					<a data-bind="attr: {href : 'user.html?idUser='+id}">
+					<a data-bind="attr: {href : 'price_range.html?idPriceRange='+id}">
 						<span data-bind="text: name"></span>
 					</a>
 				</td>
-				<td><span data-bind="text: username"></span></td>
-				<td><span data-bind="text: email"></span></td>
-				<td><span data-bind="text: created_at"></span></td>
-				<td><span data-bind="text: updated_at"></span></td>
+				<td><span data-bind="text: description"></span></td>
 				<td>
-					<a class="btn btn-primary" data-bind="attr: {href : 'editUser.html?idUser='+id}">
+					<a class="btn btn-primary" data-bind="attr: {href : 'editPriceRange.html?idPriceRange='+id}">
 						<span class="glyphicon glyphicon-pencil"></span> Edit
 					</a>
-					<button class="btn btn-danger" data-bind="click : $parent.showDeleteUser, visible: id != $parent.currentUser().id">
+					<button class="btn btn-danger" data-bind="click : $parent.showDeletePriceRange">
 						<span class="glyphicon glyphicon-trash"></span> Delete
 					</button>
 				</td>
@@ -56,7 +42,7 @@
 		</tbody>
 	</table>
 
-	<a href="createUser.html" class="btn btn-primary">New user</a>
+	<a href="createPriceRange.html" class="btn btn-primary">New price_range</a>
 
 	<br />
 	<br />
@@ -64,7 +50,7 @@
 </body>
 
 <script type="text/javascript" src="http://127.0.0.1:9080/js/v1/api.js"></script>
-<script type="text/javascript" src="js/users.js"></script>
+<script type="text/javascript" src="js/price_ranges.js"></script>
 
 </html>
 
