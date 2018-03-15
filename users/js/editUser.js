@@ -17,7 +17,7 @@ function EditUserViewModel() {
     self.checkUser = function() {
         var user = JSON.parse(sessionStorage.getItem('user'));
         if (!user) {
-            location.href = '../index.html';
+            location.href = '../index.php';
             return null;
         }
         self.currentUser(user);
@@ -26,7 +26,7 @@ function EditUserViewModel() {
     self.logout = function() {
         var api = new Sumbroker();
         api.logout(function() {
-            location.href = '../index.html';
+            location.href = '../index.php';
         });
     };
 
@@ -49,7 +49,7 @@ function EditUserViewModel() {
             email: self.email(),
         };
         api.updateUser(self.id(), params, function() {
-            location.href = 'users.html';
+            location.href = 'users.php';
         });
     }
 

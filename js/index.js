@@ -15,14 +15,16 @@ function LoginViewModel() {
             password: self.password()
         }
         api.login(params, function(r) {
-            location.href = 'users/users.html';
+            location.href = 'users/users.php';
+        }, function(r) {
+            console.log(r);
         });
     }
 
     self.logout = function() {
         var api = new Sumbroker();
         api.logout(function() {
-            location.href = 'index.html';
+            location.href = 'index.php';
         });
     };
 

@@ -14,7 +14,7 @@ function CreatePriceRangeViewModel() {
     self.checkUser = function() {
         var user = JSON.parse(sessionStorage.getItem('user'));
         if (!user) {
-            location.href = '../index.html';
+            location.href = '../index.php';
             return null;
         }
         self.currentUser(user);
@@ -23,7 +23,7 @@ function CreatePriceRangeViewModel() {
     self.logout = function() {
         var api = new Sumbroker();
         api.logout(function() {
-            location.href = '../index.html';
+            location.href = '../index.php';
         });
     };
 
@@ -34,7 +34,7 @@ function CreatePriceRangeViewModel() {
             description: self.description(),
         };
         api.createPriceRange(params, function(r) {
-            location.href = 'price_ranges.html';
+            location.href = 'price_ranges.php';
         });
     }
 

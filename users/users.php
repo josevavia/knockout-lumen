@@ -1,14 +1,6 @@
 <html>
 
-<head>
-	<title>Minimal Knockout App</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>
-
-</head>
+<?php include "../common/header.php"?>
 
 <body class="text-center">
 
@@ -36,7 +28,7 @@
 					<span data-bind="text: id"></span>
 				</td>
 				<td>
-					<a data-bind="attr: {href : 'user.html?idUser='+id}">
+					<a data-bind="attr: {href : 'user.php?idUser='+id}">
 						<span data-bind="text: name"></span>
 					</a>
 				</td>
@@ -45,7 +37,7 @@
 				<td><span data-bind="text: created_at"></span></td>
 				<td><span data-bind="text: updated_at"></span></td>
 				<td>
-					<a class="btn btn-primary" data-bind="attr: {href : 'editUser.html?idUser='+id}">
+					<a class="btn btn-primary" data-bind="attr: {href : 'editUser.php?idUser='+id}">
 						<span class="glyphicon glyphicon-pencil"></span> Edit
 					</a>
 					<button class="btn btn-danger" data-bind="click : $parent.showDeleteUser, visible: id != $parent.currentUser().id">
@@ -56,14 +48,12 @@
 		</tbody>
 	</table>
 
-	<a href="createUser.html" class="btn btn-primary">New user</a>
+	<a href="createUser.php" class="btn btn-primary">New user</a>
 
-	<br />
-	<br />
-	<a class="btn btn-link" href="../index.html">Index</a> <button class="btn btn-link" data-bind="click: logout">Logout</button>
+	<?php include "../common/menu.php"?>
 </body>
 
-<script type="text/javascript" src="http://127.0.0.1:9080/js/v1/api.js"></script>
+<?php include "../common/footer.php"?>
 <script type="text/javascript" src="js/users.js"></script>
 
 </html>
