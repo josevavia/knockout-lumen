@@ -1,18 +1,17 @@
-function CreateUserViewModel() {
+function ProductCategoryViewModel() {
     var self = this;
 
+    self.id = ko.observable();
     self.name = ko.observable();
-    self.username = ko.observable();
-    self.email = ko.observable();
-    self.password = ko.observable();
 
     self.currentUser = ko.observable();
 
     self.init = function() {
         self.checkUser();
+        self.getProductCategory();
     }
 
-    // check connected user
+    // check connected product_category
     self.checkUser = function() {
         var user = JSON.parse(sessionStorage.getItem('user'));
         if (!user) {
@@ -29,16 +28,12 @@ function CreateUserViewModel() {
         });
     };
 
-    self.createUser = function() {
+    self.getProductCategory = function() {
         var api = new Sumbroker();
-        var params = {
-            name: self.name(),
-            username: self.username(),
-            email: self.email(),
-            password: self.password(),
-        };
-        api.createUser(params, function(r) {
-            location.href = 'users.php';
+        var product_category_id = (new URLSearchParams(window.location.search)).get('idProductCategory');
+        api.getProductCategory(product_category_id, function(r) {
+            self.id(r.id);
+            self.name(r.name);
         });
     }
 
@@ -50,4 +45,4 @@ function CreateUserViewModel() {
 }
 
 // Activates knockout.js
-ko.applyBindings(new CreateUserViewModel());
+ko.applyBindings(new ProductCategoryViewModel());

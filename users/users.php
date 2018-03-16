@@ -9,9 +9,8 @@
 		<thead>
 		<tr>
 			<td>Id</td>
-			<td>Name</td>
 			<td>Username</td>
-			<td>Email</td>
+			<td>Api token</td>
 			<td>Created at</td>
 			<td>Updated at</td>
 			<td>Operations</td>
@@ -29,15 +28,14 @@
 				</td>
 				<td>
 					<a data-bind="attr: {href : 'user.php?idUser='+id}">
-						<span data-bind="text: name"></span>
+						<span data-bind="text: username"></span>
 					</a>
 				</td>
-				<td><span data-bind="text: username"></span></td>
-				<td><span data-bind="text: email"></span></td>
+				<td><span data-bind="text: api_token"></span></td>
 				<td><span data-bind="text: created_at"></span></td>
 				<td><span data-bind="text: updated_at"></span></td>
 				<td>
-					<a class="btn btn-primary" data-bind="attr: {href : 'editUser.php?idUser='+id}">
+					<a class="btn btn-primary" data-bind="attr: {href : 'edit_user.php?idUser='+id}">
 						<span class="glyphicon glyphicon-pencil"></span> Edit
 					</a>
 					<button class="btn btn-danger" data-bind="click : $parent.showDeleteUser, visible: id != $parent.currentUser().id">

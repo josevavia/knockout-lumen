@@ -1,19 +1,17 @@
-function EditUserViewModel() {
+function EditProductCategoryViewModel() {
     var self = this;
 
     self.id = ko.observable();
     self.name = ko.observable();
-    self.username = ko.observable();
-    self.email = ko.observable();
 
     self.currentUser = ko.observable();
 
     self.init = function() {
         self.checkUser();
-        self.getUser();
+        self.getProductCategory();
     }
 
-    // check connected user
+    // check connected product_category
     self.checkUser = function() {
         var user = JSON.parse(sessionStorage.getItem('user'));
         if (!user) {
@@ -30,26 +28,22 @@ function EditUserViewModel() {
         });
     };
 
-    self.getUser = function() {
+    self.getProductCategory = function() {
         var api = new Sumbroker();
-        var user_id = (new URLSearchParams(window.location.search)).get('idUser');
-        api.getUser(user_id, function(r) {
+        var product_category_id = (new URLSearchParams(window.location.search)).get('idProductCategory');
+        api.getProductCategory(product_category_id, function(r) {
             self.id(r.id);
             self.name(r.name);
-            self.username(r.username);
-            self.email(r.email);
         });
     }
 
-    self.updateUser = function() {
+    self.updateProductCategory = function() {
         var api = new Sumbroker();
         var params = {
             name: self.name(),
-            username: self.username(),
-            email: self.email(),
         };
-        api.updateUser(self.id(), params, function() {
-            location.href = 'users.php';
+        api.updateProductCategory(self.id(), params, function() {
+            location.href = 'product_categories.php';
         });
     }
 
@@ -61,4 +55,4 @@ function EditUserViewModel() {
 }
 
 // Activates knockout.js
-ko.applyBindings(new EditUserViewModel());
+ko.applyBindings(new EditProductCategoryViewModel());

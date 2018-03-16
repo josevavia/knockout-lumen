@@ -2,9 +2,8 @@ function UserViewModel() {
     var self = this;
 
     self.id = ko.observable();
-    self.name = ko.observable();
     self.username = ko.observable();
-    self.email = ko.observable();
+    self.api_token = ko.observable();
 
     self.currentUser = ko.observable();
 
@@ -35,9 +34,8 @@ function UserViewModel() {
         var user_id = (new URLSearchParams(window.location.search)).get('idUser');
         api.getUser(user_id, function(r) {
             self.id(r.id);
-            self.name(r.name);
             self.username(r.username);
-            self.email(r.email);
+            self.api_token(r.api_token);
         });
     }
 

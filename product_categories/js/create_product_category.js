@@ -1,18 +1,15 @@
-function EditPriceRangeViewModel() {
+function CreateProductCategoryViewModel() {
     var self = this;
 
-    self.id = ko.observable();
     self.name = ko.observable();
-    self.description = ko.observable();
 
     self.currentUser = ko.observable();
 
     self.init = function() {
         self.checkUser();
-        self.getPriceRange();
     }
 
-    // check connected price_range
+    // check connected product_category
     self.checkUser = function() {
         var user = JSON.parse(sessionStorage.getItem('user'));
         if (!user) {
@@ -29,24 +26,13 @@ function EditPriceRangeViewModel() {
         });
     };
 
-    self.getPriceRange = function() {
-        var api = new Sumbroker();
-        var price_range_id = (new URLSearchParams(window.location.search)).get('idPriceRange');
-        api.getPriceRange(price_range_id, function(r) {
-            self.id(r.id);
-            self.name(r.name);
-            self.description(r.description);
-        });
-    }
-
-    self.updatePriceRange = function() {
+    self.createProductCategory = function() {
         var api = new Sumbroker();
         var params = {
             name: self.name(),
-            description: self.description(),
         };
-        api.updatePriceRange(self.id(), params, function() {
-            location.href = 'price_ranges.php';
+        api.createProductCategory(params, function(r) {
+            location.href = 'product_categories.php';
         });
     }
 
@@ -58,4 +44,4 @@ function EditPriceRangeViewModel() {
 }
 
 // Activates knockout.js
-ko.applyBindings(new EditPriceRangeViewModel());
+ko.applyBindings(new CreateProductCategoryViewModel());

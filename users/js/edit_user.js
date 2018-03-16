@@ -1,16 +1,18 @@
-function PriceRangesViewModel() {
+function EditUserViewModel() {
     var self = this;
 
-    self.price_ranges = ko.observableArray();
+    self.id = ko.observable();
+    self.username = ko.observable();
+    self.api_token = ko.observable();
 
     self.currentUser = ko.observable();
 
     self.init = function() {
         self.checkUser();
-        self.getPriceRanges();
+        self.getUser();
     }
 
-    // check connected price_range
+    // check connected user
     self.checkUser = function() {
         var user = JSON.parse(sessionStorage.getItem('user'));
         if (!user) {
@@ -27,23 +29,23 @@ function PriceRangesViewModel() {
         });
     };
 
-    self.getPriceRanges = function() {
+    self.getUser = function() {
         var api = new Sumbroker();
-        api.getPriceRanges({}, function(r) {
-            self.price_ranges(r);
+        var user_id = (new URLSearchParams(window.location.search)).get('idUser');
+        api.getUser(user_id, function(r) {
+            self.id(r.id);
+            self.username(r.username);
+            self.api_token(r.api_token);
         });
     }
 
-    self.showDeletePriceRange = function(price_range) {
-        if (confirm('Are you sure?')) {
-            self.deletePriceRange(price_range);
-        }
-    }
-
-    self.deletePriceRange = function(price_range) {
+    self.updateUser = function() {
         var api = new Sumbroker();
-        api.deletePriceRange(price_range.id, function() {
-            self.getPriceRanges();
+        var params = {
+            username: self.username(),
+        };
+        api.updateUser(self.id(), params, function() {
+            location.href = 'users.php';
         });
     }
 
@@ -55,4 +57,4 @@ function PriceRangesViewModel() {
 }
 
 // Activates knockout.js
-ko.applyBindings(new PriceRangesViewModel());
+ko.applyBindings(new EditUserViewModel());
