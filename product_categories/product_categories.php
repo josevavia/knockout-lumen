@@ -32,7 +32,7 @@
 		</tbody>
 	</table>
 
-	<a href="createProductCategory.php" class="btn btn-primary">New product_category</a>
+	<a href="create_product_category.php" class="btn btn-primary">New product_category</a>
 	<?php include "../common/menu.php"?>
 </body>
 

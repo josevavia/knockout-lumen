@@ -46,7 +46,7 @@
 		</tbody>
 	</table>
 
-	<a href="createUser.php" class="btn btn-primary">New user</a>
+	<a href="create_user.php" class="btn btn-primary">New user</a>
 
 	<?php include "../common/menu.php"?>
 </body>
