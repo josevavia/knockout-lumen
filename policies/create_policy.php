@@ -11,15 +11,14 @@
                                                 optionsValue: 'id',
                                                 optionsText: 'name',
                                                 optionsCaption: 'Select product...',
-                                                event: {change: selectProduct}">
+                                                event: {change: updatePrice} ">
         </select>
-        <select class="form-control" data-bind="value: product_config_id,
-                                                options: categories,
-                                                optionsValue: function(item) { return item.pivot.id; },
+        <select class="form-control" data-bind="value: product_category_id,
+                                                options: product_categories,
+                                                optionsValue: 'id',
                                                 optionsText: 'name',
                                                 optionsCaption: 'Select category...',
-                                                event: {change: selectCategory},
-                                                enable: product_id() != null">
+                                                event: {change: updatePrice} ">
         </select>
         <input type="text" id="name" class="form-control" required placeholder="NAME" data-bind="value: name" />
         <input type="text" id="email" class="form-control" required placeholder="EMAIL" data-bind="value: email" />
@@ -28,8 +27,11 @@
         <input type="text" id="periodicity" class="form-control" required placeholder="PERIODICITY" data-bind="value: periodicity" />
         <input type="text" id="imei" class="form-control" required placeholder="IMEI" data-bind="value: imei" />
         <input type="text" id="purchase_date" class="form-control" required placeholder="PURCHASE_DATE" data-bind="value: purchase_date" />
-        <input type="text" id="brand" class="form-control" required placeholder="BRAND" data-bind="value: brand" />
         <input type="text" id="model" class="form-control" required placeholder="MODEL" data-bind="value: model" />
+
+        <input type="text" id="pan" class="form-control" required placeholder="PAN" data-bind="value: pan" />
+        <input type="text" id="expiration" class="form-control" required placeholder="EXPIRATION" data-bind="value: expiration" />
+        <input type="text" id="cvv2" class="form-control" required placeholder="CVV2" data-bind="value: cvv2" />
 
         <input type="text" id="discount_code" class="form-control" placeholder="DISCOUNT_CODE" data-bind="value: discount_code" />
 
@@ -40,9 +42,13 @@
             Price: <div data-bind="text: price"></div>
         </div>
 
+
 		<a href="policies.php" class="btn btn-primary">Cancel</a>
 		<button class="btn btn-primary" type="submit">Save</button>
 	</form>
+
+    <div id="divForm"></div>
+
 	<?php include "../common/menu.php"?>
 </body>
 
