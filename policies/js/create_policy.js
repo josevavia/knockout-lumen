@@ -19,6 +19,7 @@ function CreatePolicyViewModel() {
     self.discount_code = ko.observable();
     self.imei = ko.observable("123456789");
     self.purchase_date = ko.observable("2017-05-01");
+    self.purchase_price = ko.observable("559.75");
     self.model = ko.observable("Google Nexus ||| 5X");
 
     self.pan = ko.observable("5540500001000004");
@@ -78,6 +79,7 @@ function CreatePolicyViewModel() {
             discount_code: self.discount_code(),
             imei: self.imei(),
             purchase_date: self.purchase_date(),
+            purchase_price: self.purchase_price(),
             model: self.model(),
             pan: self.pan(),
             expiration: self.expiration(),
@@ -85,7 +87,7 @@ function CreatePolicyViewModel() {
         };
         api.createPolicy(params, function(r) {
             $('#divForm').html(r.form);
-            $('#formPolicyPayment').submit();
+            // $('#formPolicyPayment').submit();
             // location.href = 'policies.php';
         });
     }

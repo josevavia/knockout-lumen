@@ -10,14 +10,12 @@
                                                 options: products,
                                                 optionsValue: 'id',
                                                 optionsText: 'name',
-                                                optionsCaption: 'Select product...',
                                                 event: {change: updatePrice} ">
         </select>
         <select class="form-control" data-bind="value: product_category_id,
                                                 options: product_categories,
                                                 optionsValue: 'id',
                                                 optionsText: 'name',
-                                                optionsCaption: 'Select category...',
                                                 event: {change: updatePrice} ">
         </select>
         <input type="text" id="name" class="form-control" required placeholder="NAME" data-bind="value: name" />
@@ -27,6 +25,7 @@
         <input type="text" id="periodicity" class="form-control" required placeholder="PERIODICITY" data-bind="value: periodicity" />
         <input type="text" id="imei" class="form-control" required placeholder="IMEI" data-bind="value: imei" />
         <input type="text" id="purchase_date" class="form-control" required placeholder="PURCHASE_DATE" data-bind="value: purchase_date" />
+        <input type="text" id="purchase_price" class="form-control" required placeholder="PURCHASE_PRICE" data-bind="value: purchase_price" />
         <input type="text" id="model" class="form-control" required placeholder="MODEL" data-bind="value: model" />
 
         <input type="text" id="pan" class="form-control" required placeholder="PAN" data-bind="value: pan" />
