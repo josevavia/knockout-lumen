@@ -8,6 +8,7 @@
 	<table class="table" data-bind="visible: policies().length > 0">
 		<thead>
 		<tr>
+			<td>Identifier</td>
 			<td>Number</td>
 			<td>Name</td>
 			<td>Email</td>
@@ -21,9 +22,10 @@
 			<tr>
 				<td>
 					<a data-bind="attr: {href : 'policy.php?idPolicy='+id}">
-						<span data-bind="text: number"></span>
+						<span data-bind="text: identifier"></span>
 					</a>
 				</td>
+				<td><span data-bind="text: number"></span></td>
 				<td><span data-bind="text: name"></span></td>
 				<td><span data-bind="text: email"></span></td>
 				<td><span data-bind="text: product.name"></span></td>

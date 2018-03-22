@@ -28,7 +28,7 @@
 				</td>
 				<td>
 					<a data-bind="attr: {href : 'user.php?idUser='+id}">
-						<span data-bind="text: username"></span>
+						<span data-bind="text: email"></span>
 					</a>
 				</td>
 				<td><span data-bind="text: api_token"></span></td>

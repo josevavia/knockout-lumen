@@ -11,7 +11,7 @@ function LoginViewModel() {
 
         var api = new Sumbroker();
         var params = {
-            username: self.username(),
+            email: self.username(),
             password: self.password()
         }
         api.login(params, function(r) {
