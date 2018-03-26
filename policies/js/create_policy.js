@@ -96,9 +96,9 @@ function CreatePolicyViewModel() {
         self.price(null);
         ko.utils.arrayForEach(self.products(), function(itemProduct) {
             if (itemProduct.id == self.product_id()) {
-                ko.utils.arrayForEach(itemProduct.categories, function(itemCategory) {
-                    if (itemCategory.id == self.product_category_id()) {
-                        self.price(itemCategory.pivot.price);
+                ko.utils.arrayForEach(itemProduct.prices, function(itemPrice) {
+                    if (itemPrice.id == self.product_category_id()) {
+                        self.price(itemPrice.pivot.price);
                         return;
                     }
                 });

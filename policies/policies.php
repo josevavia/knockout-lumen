@@ -14,6 +14,7 @@
 			<td>Email</td>
 			<td>Product</td>
 			<td>Price</td>
+			<td>Status</td>
 			<td>Created at</td>
 			<td>Updated at</td>
 		</tr>
@@ -21,7 +22,7 @@
 		<tbody data-bind="foreach: policies">
 			<tr>
 				<td>
-					<a data-bind="attr: {href : 'policy.php?idPolicy='+id}">
+					<a data-bind="attr: {href : 'policy.php?idPolicy='+identifier}">
 						<span data-bind="text: identifier"></span>
 					</a>
 				</td>
@@ -29,7 +30,8 @@
 				<td><span data-bind="text: name"></span></td>
 				<td><span data-bind="text: email"></span></td>
 				<td><span data-bind="text: product.name"></span></td>
-				<td><span data-bind="text: price"></span></td>
+				<td><span data-bind="text: price_total"></span></td>
+				<td><span data-bind="text: status"></span></td>
 				<td><span data-bind="text: created_at"></span></td>
 				<td><span data-bind="text: updated_at"></span></td>
 			</tr>
