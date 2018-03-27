@@ -26,7 +26,6 @@
             <p>BRAND: <span data-bind="text: brand"></span></p>
             <p>MODEL: <span data-bind="text: model"></span></p>
         </div>
-        <p>Payments:</p>
         <div data-bind="foreach: policy_payments">
             <hr />
             <p>PAYMENT IDENTIFIER: <span data-bind="text: identifier"></span></p>
@@ -37,6 +36,9 @@
             <p>PAYMENT_DATE: <span data-bind="text: payment_date"></span></p>
             <p>IS_RENEWAL: <span data-bind="text: is_renewal"></span></p>
         </div>
+
+        <a class="btn btn-default" data-bind="attr: {href : contract_link}" target="_blank">CONTRACT LINK</a>
+        <br />
     </div>
 
 	<a class="btn btn-primary" href="policies.php">Cancel</a>
