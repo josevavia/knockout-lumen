@@ -1,13 +1,16 @@
-function PolicyViewModel() {
+function DiscountViewModel() {
     var self = this;
 
-    self.policy = ko.observableArray();
+    self.id = ko.observable();
+    self.identifier = ko.observable();
+    self.discount_code = ko.observable();
+    self.discount_percentage = ko.observable();
 
     self.currentUser = ko.observable();
 
     self.init = function() {
         self.checkUser();
-        self.getPolicy();
+        self.getDiscount();
     }
 
     // check connected user
@@ -27,11 +30,14 @@ function PolicyViewModel() {
         });
     };
 
-    self.getPolicy = function() {
+    self.getDiscount = function() {
         var api = new Sumbroker();
-        var policy_id = (new URLSearchParams(window.location.search)).get('idPolicy');
-        api.getPolicy(policy_id, function(r) {
-            self.policy([r]);
+        var discount_id = (new URLSearchParams(window.location.search)).get('idDiscount');
+        api.getDiscount(discount_id, function(r) {
+            self.id(r.id);
+            self.identifier(r.identifier);
+            self.discount_code(r.discount_code);
+            self.discount_percentage(r.discount_percentage);
         });
     }
 
@@ -43,4 +49,4 @@ function PolicyViewModel() {
 }
 
 // Activates knockout.js
-ko.applyBindings(new PolicyViewModel());
+ko.applyBindings(new DiscountViewModel());

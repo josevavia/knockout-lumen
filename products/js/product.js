@@ -1,13 +1,13 @@
-function PolicyViewModel() {
+function ProductViewModel() {
     var self = this;
 
-    self.policy = ko.observableArray();
+    self.product = ko.observableArray();
 
     self.currentUser = ko.observable();
 
     self.init = function() {
         self.checkUser();
-        self.getPolicy();
+        self.getProduct();
     }
 
     // check connected user
@@ -27,11 +27,11 @@ function PolicyViewModel() {
         });
     };
 
-    self.getPolicy = function() {
+    self.getProduct = function() {
         var api = new Sumbroker();
-        var policy_id = (new URLSearchParams(window.location.search)).get('idPolicy');
-        api.getPolicy(policy_id, function(r) {
-            self.policy([r]);
+        var product_id = (new URLSearchParams(window.location.search)).get('idProduct');
+        api.getProduct(product_id, function(r) {
+            self.product([r]);
         });
     }
 
@@ -43,4 +43,4 @@ function PolicyViewModel() {
 }
 
 // Activates knockout.js
-ko.applyBindings(new PolicyViewModel());
+ko.applyBindings(new ProductViewModel());

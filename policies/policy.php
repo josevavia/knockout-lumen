@@ -18,7 +18,6 @@
         <p>PRICE_PER_PAYMENT: <span data-bind="text: price_per_payment"></span></p>
         <p>PERIODICITY: <span data-bind="text: periodicity"></span></p>
         <p>DAY_OF_PAYMENT: <span data-bind="text: day_of_payment"></span></p>
-        <p>DISCOUNT_CODE: <span data-bind="text: discount_code"></span></p>
         <div data-bind="foreach: mobile_terminals">
             <hr />
             <p>IMEI: <span data-bind="text: imei"></span></p>

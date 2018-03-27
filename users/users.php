@@ -19,11 +19,6 @@
 		<tbody data-bind="foreach: users">
 			<tr>
 				<td>
-					<span class="glyphicon" data-bind="
-						css: {
-							'glyphicon-ok-circle' : id == $parent.currentUser().id,
-							'glyphicon-remove-circle' : id != $parent.currentUser().id
-						}"></span>
 					<span data-bind="text: id"></span>
 				</td>
 				<td>
@@ -38,7 +33,7 @@
 					<a class="btn btn-primary" data-bind="attr: {href : 'edit_user.php?idUser='+id}">
 						<span class="glyphicon glyphicon-pencil"></span> Edit
 					</a>
-					<button class="btn btn-danger" data-bind="click : $parent.showDeleteUser, visible: id != $parent.currentUser().id">
+					<button class="btn btn-danger" data-bind="click : $parent.showDeleteUser">
 						<span class="glyphicon glyphicon-trash"></span> Delete
 					</button>
 				</td>
