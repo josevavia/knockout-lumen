@@ -38,10 +38,10 @@
 
         <a class="btn btn-default" data-bind="attr: {href : contract_link}" target="_blank">CONTRACT LINK</a>
         <br />
+        <br />
     </div>
 
 	<a class="btn btn-primary" href="policies.php">Cancel</a>
-	<a class="btn btn-primary" data-bind="attr: {href : 'edit_policy.php?idPolicy='+id()}">Edit policy</a>
 	<?php include "../common/menu.php"?>
 </body>
 
