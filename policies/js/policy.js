@@ -8,7 +8,7 @@ function PolicyViewModel() {
     self.init = function() {
         self.checkUser();
         self.getPolicy();
-    }
+    };
 
     // check connected user
     self.checkUser = function() {
@@ -18,7 +18,7 @@ function PolicyViewModel() {
             return null;
         }
         self.currentUser(user);
-    }
+    };
 
     self.logout = function() {
         var api = new Sumbroker();
@@ -33,11 +33,22 @@ function PolicyViewModel() {
         api.getPolicy(policy_id, function(r) {
             self.policy([r]);
         });
-    }
+    };
+
+    self.payPayment = function(policy_id, payment_id) {
+        console.log('pasando!');
+        console.log(policy_id);
+        console.log(payment_id);
+        var api = new Sumbroker();
+        api.payPayment(policy_id, payment_id, [], function(r) {
+            console.log(r);
+            self.policy([r]);
+        });
+    };
 
     self.currentUserId = function() {
         return JSON.parse(sessionStorage.getItem('user')).id;
-    }
+    };
 
     self.init();
 }
