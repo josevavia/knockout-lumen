@@ -94,15 +94,14 @@ function CreatePolicyViewModel() {
 
     self.updatePrice = function() {
         self.price(null);
-        ko.utils.arrayForEach(self.products(), function(itemProduct) {
-            if (itemProduct.id == self.product_id()) {
-                ko.utils.arrayForEach(itemProduct.prices, function(itemPrice) {
-                    if (itemPrice.id == self.product_category_id()) {
-                        self.price(itemPrice.pivot.price);
-                        return;
-                    }
-                });
-            }
+        var api = new Sumbroker();
+        var params = {
+            'product_id': self.product_id(),
+            'product_category_id': self.product_category_id(),
+            'discount_code': self.discount_code()
+        };
+        api.getPolicyPrice(params, function (r) {
+            self.price(r.price_annual);
         });
     }
 

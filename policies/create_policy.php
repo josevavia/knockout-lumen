@@ -32,7 +32,7 @@
         <input type="text" id="expiration" class="form-control" required placeholder="EXPIRATION" data-bind="value: expiration" />
         <input type="text" id="cvv2" class="form-control" required placeholder="CVV2" data-bind="value: cvv2" />
 
-        <input type="text" id="discount_code" class="form-control" placeholder="DISCOUNT_CODE" data-bind="value: discount_code" />
+        <input type="text" id="discount_code" class="form-control" placeholder="DISCOUNT_CODE" data-bind="value: discount_code, event: {change: updatePrice}" />
 
 		<br />
 
