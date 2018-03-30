@@ -44,6 +44,7 @@
 
 		<a href="policies.php" class="btn btn-primary">Cancel</a>
 		<button class="btn btn-primary" type="submit">Save</button>
+		<button class="btn btn-primary" type="button" data-bind="click: createPolicyAndPay">Save and pay</button>
 	</form>
 
     <div id="divForm"></div>

@@ -53,10 +53,10 @@
             <tr>
                 <td><span data-bind="text: identifier"></span></td>
                 <td><span data-bind="text: price"></span></td>
-                <td><span data-bind="text: activation_date"></span></td>
-                <td><span data-bind="text: start_date"></span></td>
-                <td><span data-bind="text: end_date"></span></td>
-                <td><span data-bind="text: payment_date"></span></td>
+                <td><span data-bind="text: moment(activation_date).format('YYYY-MM-DD')"></span></td>
+                <td><span data-bind="text: moment(start_date).format('YYYY-MM-DD')"></span></td>
+                <td><span data-bind="text: moment(end_date).format('YYYY-MM-DD')"></span></td>
+                <td><span data-bind="text: payment_date ? moment(payment_date).format('YYYY-MM-DD') : '-'"></span></td>
                 <td><span data-bind="text: is_renewal"></span></td>
                 <td>
                     <!-- ko if: !payment_date -->
