@@ -18,6 +18,8 @@
         <p>PRICE_PER_PAYMENT: <span data-bind="text: price_per_payment"></span></p>
         <p>PERIODICITY: <span data-bind="text: periodicity"></span></p>
         <p>DAY_OF_PAYMENT: <span data-bind="text: day_of_payment"></span></p>
+        <p>START: <span data-bind="text: moment(validity_start).format('YYYY-MM-DD')"></span></p>
+        <p>END: <span data-bind="text: moment(validity_end).format('YYYY-MM-DD')"></span></p>
 
         <h2>Mobile terminal</h2>
         <table class="table">

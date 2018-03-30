@@ -91,7 +91,7 @@ function CreatePolicyViewModel() {
         });
     }
 
-    self.createPolicyAndPay = function() {
+    self.createPolicyAndPayTPV = function() {
         var api = new Sumbroker();
         var params = {
             store_id: 1,
@@ -112,8 +112,37 @@ function CreatePolicyViewModel() {
             cvv2: self.cvv2(),
         };
         api.createPolicy(params, function(r) {
+            console.log(r);
             $('#divForm').html(r.form);
             $('#formPolicyPayment').submit();
+        });
+    }
+
+    self.createPolicyAndPayManual = function() {
+        var api = new Sumbroker();
+        var params = {
+            store_id: 1,
+            product_id: self.product_id(),
+            product_category_id: self.product_category_id(),
+            name: self.name(),
+            email: self.email(),
+            phone_number: self.phone_number(),
+            id_number: self.id_number(),
+            periodicity: self.periodicity(),
+            discount_code: self.discount_code(),
+            imei: self.imei(),
+            purchase_date: self.purchase_date(),
+            purchase_price: self.purchase_price(),
+            model: self.model(),
+            pan: self.pan(),
+            expiration: self.expiration(),
+            cvv2: self.cvv2(),
+        };
+        api.createPolicy(params, function(r) {
+            console.log(r);
+            api.payPayment(r.policy.identifier, r.policy.policy_payments[0].identifier, [], function() {
+                location.href = 'policy.php?idPolicy='+r.policy.identifier;
+            });
         });
     }
 
