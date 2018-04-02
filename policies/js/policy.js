@@ -1,7 +1,7 @@
 function PolicyViewModel() {
     var self = this;
 
-    self.policy = ko.observableArray();
+    self.policy = ko.observable();
 
     self.currentUser = ko.observable();
 
@@ -31,7 +31,7 @@ function PolicyViewModel() {
         var api = new Sumbroker();
         var policy_id = (new URLSearchParams(window.location.search)).get('idPolicy');
         api.getPolicy(policy_id, function(r) {
-            self.policy([r]);
+            self.policy(r);
         });
     };
 
@@ -42,7 +42,7 @@ function PolicyViewModel() {
         var api = new Sumbroker();
         api.payPayment(policy_id, payment_id, [], function(r) {
             console.log(r);
-            self.policy([r]);
+            self.policy(r);
         });
     };
 
