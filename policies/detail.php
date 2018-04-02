@@ -32,7 +32,7 @@
                 <!-- ko foreach: usages -->
                     <p>
                         <span data-bind="text: moment(created_at).format('YYYY-MM-DD')"></span>:
-                        <a data-bind="attr: {href : 'detail.php?idPolicy='+identifier}"><span data-bind="text: number"></span></a>
+                        <a data-bind="attr: {href : 'detail.php?id='+identifier}"><span data-bind="text: number"></span></a>
                     </p>
                 <!-- /ko -->
             <!-- /ko -->
@@ -43,7 +43,7 @@
             <!-- ko foreach: policy_discounts -->
                 <p>CODE: <a data-bind="attr: {href : '../discounts/detail.php?idDiscount='+discount.id}"><span data-bind="text: discount.discount_code"></span></a></p>
                 <p>PERCENTAGE: <span data-bind="text: discount_percentage"></span></p>
-                <p>POLICY: <a data-bind="attr: {href : 'detail.php?idPolicy='+discount.policy.identifier}"><span data-bind="text: discount.policy.number"></span></a></p>
+                <p>POLICY: <a data-bind="attr: {href : 'detail.php?id='+discount.policy.identifier}"><span data-bind="text: discount.policy.number"></span></a></p>
                 <p>START: <span data-bind="text: moment(validity_start).format('YYYY-MM-DD')"></span></p>
                 <p>END: <span data-bind="text: moment(validity_end).format('YYYY-MM-DD')"></span></p>
                 <hr />

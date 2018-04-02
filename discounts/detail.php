@@ -12,7 +12,7 @@
     <!-- ko foreach: usages -->
     <p>
         <span data-bind="text: moment(created_at).format('YYYY-MM-DD')"></span>:
-        <a data-bind="attr: {href : '../policies/detail.php?idPolicy='+identifier}"><span data-bind="text: number"></span></a>
+        <a data-bind="attr: {href : '../policies/detail.php?id='+identifier}"><span data-bind="text: number"></span></a>
     </p>
     <!-- /ko -->
 

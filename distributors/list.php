@@ -20,10 +20,10 @@
 		<tbody data-bind="foreach: distributors">
 			<tr>
 				<td>
-                    <span data-bind="text: id"></span>
+                    <span data-bind="text: identifier"></span>
 				</td>
 				<td>
-					<a data-bind="attr: {href : 'detail.php?id='+id}">
+					<a data-bind="attr: {href : 'detail.php?id='+identifier}">
                         <span data-bind="text: name"></span>
 					</a>
                 </td>
@@ -32,7 +32,7 @@
 				<td><span data-bind="text: created_at"></span></td>
 				<td><span data-bind="text: updated_at"></span></td>
 				<td>
-					<a class="btn btn-primary" data-bind="attr: {href : 'edit.php?id='+id}">
+					<a class="btn btn-primary" data-bind="attr: {href : 'edit.php?id='+identifier}">
 						<span class="glyphicon glyphicon-pencil"></span> Edit
 					</a>
 					<button class="btn btn-danger" data-bind="click : $parent.showDeleteDistributor">

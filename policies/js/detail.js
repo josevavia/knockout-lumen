@@ -29,7 +29,7 @@ function PolicyViewModel() {
 
     self.getPolicy = function() {
         var api = new Sumbroker();
-        var policy_id = (new URLSearchParams(window.location.search)).get('idPolicy');
+        var policy_id = (new URLSearchParams(window.location.search)).get('id');
         api.getPolicy(policy_id, function(r) {
             self.policy(r);
         });

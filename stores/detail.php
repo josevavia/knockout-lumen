@@ -12,35 +12,47 @@
         <p>EMAIL: <span data-bind="text: user.email"></span></p>
 
         <h2>Policies</h2>
-        <!-- ko if: policies.length > 0 -->
-        <table class="table">
+        <table class="table" data-bind="visible: policies.length > 0">
+            <thead>
             <tr>
-                <td>ID</td>
-                <td>NUMBER</td>
-                <td>PRICE</td>
-                <td>TYPE</td>
+                <td>Id</td>
+                <td>Number</td>
+                <td>Name</td>
+                <td>Email</td>
+                <td>Product</td>
+                <td>Price</td>
+                <td>Periodicity</td>
+                <td>Status</td>
+                <td>Created at</td>
+                <td>Updated at</td>
             </tr>
-            <!-- ko foreach: policies -->
+            </thead>
+            <tbody data-bind="foreach: policies">
             <tr>
                 <td><span data-bind="text: identifier"></span></td>
                 <td>
-                    <a data-bind="attr: {href : '../policies/detail.php?idPolicy='+identifier}">
+                    <a data-bind="attr: {href : '../policies/detail.php?id='+identifier}">
                         <span data-bind="text: number"></span>
                     </a>
                 </td>
-                <td><span data-bind="text: price_total"></span></td>
+                <td><span data-bind="text: name"></span></td>
+                <td><span data-bind="text: email"></span></td>
                 <td><span data-bind="text: product.name"></span></td>
+                <td><span data-bind="text: price_total"></span></td>
+                <td><span data-bind="text: periodicity"></span></td>
+                <td><span data-bind="text: status"></span></td>
+                <td><span data-bind="text: created_at"></span></td>
+                <td><span data-bind="text: updated_at"></span></td>
             </tr>
-            <!-- /ko -->
+            </tbody>
         </table>
-        <!-- /ko -->
-        <a class="btn btn-primary" data-bind="attr: {href : '../policies/create.php?idStore='+id}">Create policy</a>
+        <a class="btn btn-primary" data-bind="attr: {href : '../policies/create.php?idStore='+id}">New policy</a>
         <br />
         <br />
         <br />
 
         <a class="btn btn-primary" href="list.php">Cancel</a>
-        <a class="btn btn-primary" data-bind="attr: {href : 'edit.php?id='+id}">Edit</a>
+        <a class="btn btn-primary" data-bind="attr: {href : 'edit.php?id='+identifier}">Edit</a>
     </div>
 
 	<?php include "../common/menu.php"?>

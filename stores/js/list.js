@@ -1,7 +1,7 @@
 function StoresViewModel() {
     var self = this;
 
-    self.Stores = ko.observableArray();
+    self.stores = ko.observableArray();
 
     self.currentUser = ko.observable();
 
@@ -30,7 +30,7 @@ function StoresViewModel() {
     self.getStores = function() {
         var api = new Sumbroker();
         api.getStores({}, function(r) {
-            self.Stores(r);
+            self.stores(r);
         });
     }
 

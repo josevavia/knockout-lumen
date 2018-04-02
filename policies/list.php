@@ -8,6 +8,7 @@
 	<table class="table" data-bind="visible: policies().length > 0">
 		<thead>
 		<tr>
+			<td>Id</td>
 			<td>Number</td>
 			<td>Store</td>
 			<td>Name</td>
@@ -22,8 +23,9 @@
 		</thead>
 		<tbody data-bind="foreach: policies">
 			<tr>
+				<td><span data-bind="text: identifier"></span></td>
 				<td>
-					<a data-bind="attr: {href : 'detail.php?idPolicy='+identifier}">
+					<a data-bind="attr: {href : 'detail.php?id='+identifier}">
 						<span data-bind="text: number"></span>
 					</a>
 				</td>
@@ -40,7 +42,7 @@
 		</tbody>
 	</table>
 
-	<a href="create.php" class="btn btn-primary">Create policy</a>
+	<a href="create.php" class="btn btn-primary">New policy</a>
 
 	<?php include "../common/menu.php"?>
 </body>

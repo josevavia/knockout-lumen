@@ -106,7 +106,7 @@ function CreatePolicyViewModel() {
         };
         api.createPolicy(params, function(r) {
             console.log(r);
-            location.href = 'detail.php?idPolicy='+r.policy.identifier;
+            location.href = 'detail.php?id='+r.policy.identifier;
         });
     }
 
@@ -160,7 +160,7 @@ function CreatePolicyViewModel() {
         api.createPolicy(params, function(r) {
             console.log(r);
             api.payPayment(r.policy.identifier, r.policy.policy_payments[0].identifier, [], function() {
-                location.href = 'detail.php?idPolicy='+r.policy.identifier;
+                location.href = 'detail.php?id='+r.policy.identifier;
             });
         });
     }

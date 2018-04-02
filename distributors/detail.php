@@ -12,31 +12,46 @@
         <p>EMAIL: <span data-bind="text: user.email"></span></p>
 
         <h2>Stores</h2>
-        <!-- ko if: stores.length > 0 -->
-        <table class="table">
+        <table class="table" data-bind="visible: stores.length > 0">
+            <thead>
             <tr>
-                <td>ID</td>
-                <td>NAME</td>
-            </tr>
-            <!-- ko foreach: stores -->
+                <td>Id</td>
+                <td>Name</td>
+                <td>Alias</td>
+                <td>Identifier</td>
+                <td>Created at</td>
+                <td>Updated at</td>
+            </tr>hp
+            </thead>
+            <tbody data-bind="foreach: stores">
             <tr>
-                <td><span data-bind="text: id"></span></td>
                 <td>
-                    <a data-bind="attr: {href : '../stores/detail.php?id='+id}">
+                    <span data-bind="text: identifier"></span>
+                </td>
+                <td>
+                    <a data-bind="attr: {href : '../stores/detail.php?id='+identifier}">
                         <span data-bind="text: name"></span>
                     </a>
                 </td>
+                <td><span data-bind="text: alias"></span></td>
+                <td><span data-bind="text: identifier"></span></td>
+                <td><span data-bind="text: created_at"></span></td>
+                <td><span data-bind="text: updated_at"></span></td>
+                <td>
+                    <a class="btn btn-primary" data-bind="attr: {href : '../stores/edit.php?id='+identifier}">
+                        <span class="glyphicon glyphicon-pencil"></span> Edit
+                    </a>
+                </td>
             </tr>
-            <!-- /ko -->
+            </tbody>
         </table>
-        <!-- /ko -->
-        <a class="btn btn-primary" data-bind="attr: {href : '../stores/create.php?idDistributor='+id}">Create store</a>
+        <a class="btn btn-primary" data-bind="attr: {href : '../stores/create.php?idDistributor='+identifier}">New store</a>
         <br />
         <br />
         <br />
 
         <a class="btn btn-primary" href="list.php">Cancel</a>
-        <a class="btn btn-primary" data-bind="attr: {href : 'edit.php?id='+id}">Edit</a>
+        <a class="btn btn-primary" data-bind="attr: {href : 'edit.php?id='+identifier}">Edit</a>
     </div>
 
 	<?php include "../common/menu.php"?>
