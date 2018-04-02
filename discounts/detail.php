@@ -12,16 +12,16 @@
     <!-- ko foreach: usages -->
     <p>
         <span data-bind="text: moment(created_at).format('YYYY-MM-DD')"></span>:
-        <a data-bind="attr: {href : '../policies/policy.php?idPolicy='+identifier}"><span data-bind="text: number"></span></a>
+        <a data-bind="attr: {href : '../policies/detail.php?idPolicy='+identifier}"><span data-bind="text: number"></span></a>
     </p>
     <!-- /ko -->
 
-	<a class="btn btn-primary" href="discounts.php">Cancel</a>
+	<a class="btn btn-primary" href="list.php">Cancel</a>
 	<?php include "../common/menu.php"?>
 </body>
 
 <?php include "../common/footer.php"?>
-<script type="text/javascript" src="js/discount.js"></script>
+<script type="text/javascript" src="js/detail.js"></script>
 
 </html>
 

@@ -16,12 +16,12 @@
 			<tr>
 				<td><span data-bind="text: id"></span></td>
 				<td>
-					<a data-bind="attr: {href : 'product_category.php?idProductCategory='+id}">
+					<a data-bind="attr: {href : 'detail.php?idProductCategory='+id}">
 						<span data-bind="text: name"></span>
 					</a>
 				</td>
 				<td>
-					<a class="btn btn-primary" data-bind="attr: {href : 'edit_product_category.php?idProductCategory='+id}">
+					<a class="btn btn-primary" data-bind="attr: {href : 'edit.php?idProductCategory='+id}">
 						<span class="glyphicon glyphicon-pencil"></span> Edit
 					</a>
 					<button class="btn btn-danger" data-bind="click : $parent.showDeleteProductCategory">
@@ -32,12 +32,12 @@
 		</tbody>
 	</table>
 
-	<a href="create_product_category.php" class="btn btn-primary">New product_category</a>
+	<a href="create.php" class="btn btn-primary">New product_category</a>
 	<?php include "../common/menu.php"?>
 </body>
 
 <?php include "../common/footer.php"?>
-<script type="text/javascript" src="js/product_categories.js"></script>
+<script type="text/javascript" src="js/list.js"></script>
 
 </html>
 

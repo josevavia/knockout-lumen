@@ -21,12 +21,12 @@
         </div>
     </div>
 
-	<a class="btn btn-primary" href="products.php">Cancel</a>
+	<a class="btn btn-primary" href="list.php">Cancel</a>
 	<?php include "../common/menu.php"?>
 </body>
 
 <?php include "../common/footer.php"?>
-<script type="text/javascript" src="js/product.js"></script>
+<script type="text/javascript" src="js/detail.js"></script>
 
 </html>
 

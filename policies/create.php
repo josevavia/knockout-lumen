@@ -6,6 +6,11 @@
 	<h1>Create new policy</h1>
 	<form data-bind="submit: createPolicy">
 
+        <select class="form-control" data-bind="value: store_id,
+                                                options: stores,
+                                                optionsValue: 'id',
+                                                optionsText: 'name'">
+        </select>
         <select class="form-control" data-bind="value: product_id,
                                                 options: products,
                                                 optionsValue: 'id',
@@ -42,7 +47,7 @@
         </div>
 
 
-		<a href="policies.php" class="btn btn-primary">Cancel</a>
+		<a href="list.php" class="btn btn-primary">Cancel</a>
 		<button class="btn btn-primary" type="submit">Save</button>
 		<button class="btn btn-primary" type="button" data-bind="click: createPolicyAndPayTPV">Save and pay (TPV)</button>
 		<button class="btn btn-primary" type="button" data-bind="click: createPolicyAndPayManual">Save and pay (Manual)</button>
@@ -54,7 +59,7 @@
 </body>
 
 <?php include "../common/footer.php"?>
-<script type="text/javascript" src="js/create_policy.js"></script>
+<script type="text/javascript" src="js/create.js"></script>
 
 </html>
 

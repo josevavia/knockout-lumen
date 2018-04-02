@@ -7,6 +7,9 @@ function CreatePolicyViewModel() {
 
     self.product_categories = ko.observableArray();
     self.product_category_id = ko.observable();
+
+    self.stores = ko.observableArray();
+    self.store_id = ko.observable();
     self.category = ko.observable();
 
     self.price = ko.observable(null);
@@ -32,6 +35,7 @@ function CreatePolicyViewModel() {
         self.checkUser();
         self.getProducts();
         self.getCategories();
+        self.getStores();
     }
 
     // check connected user
@@ -51,6 +55,13 @@ function CreatePolicyViewModel() {
         });
     };
 
+    self.parseParams = function() {
+        var idStore = (new URLSearchParams(window.location.search)).get('idStore');
+        if (idStore) {
+            self.store_id(idStore);
+        }
+    }
+
     self.getProducts = function() {
         var api = new Sumbroker();
         api.getProducts({}, function(r) {
@@ -65,10 +76,18 @@ function CreatePolicyViewModel() {
         });
     }
 
+    self.getStores = function() {
+        var api = new Sumbroker();
+        api.getStores({}, function(r) {
+            self.stores(r);
+            self.parseParams();
+        });
+    }
+
     self.createPolicy = function() {
         var api = new Sumbroker();
         var params = {
-            store_id: 1,
+            store_id: self.store_id(),
             product_id: self.product_id(),
             product_category_id: self.product_category_id(),
             name: self.name(),
@@ -87,7 +106,7 @@ function CreatePolicyViewModel() {
         };
         api.createPolicy(params, function(r) {
             console.log(r);
-            location.href = 'policy.php?idPolicy='+r.policy.identifier;
+            location.href = 'detail.php?idPolicy='+r.policy.identifier;
         });
     }
 
@@ -141,7 +160,7 @@ function CreatePolicyViewModel() {
         api.createPolicy(params, function(r) {
             console.log(r);
             api.payPayment(r.policy.identifier, r.policy.policy_payments[0].identifier, [], function() {
-                location.href = 'policy.php?idPolicy='+r.policy.identifier;
+                location.href = 'detail.php?idPolicy='+r.policy.identifier;
             });
         });
     }

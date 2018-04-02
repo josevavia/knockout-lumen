@@ -6,6 +6,8 @@
 
     <div data-bind="with: policy">
         <h1><span data-bind="text: number"></span></h1>
+        <p>DISTRIBUTOR: <a data-bind="attr: {href: '../distributors/detail.php?id='+store.distributor.id}"><span data-bind="text: store.distributor.name"></span></a></p>
+        <p>STORE: <a data-bind="attr: {href: '../stores/detail.php?id='+store.id}"><span data-bind="text: store.name"></span></a></p>
         <p>IDENTIFIER: <span data-bind="text: identifier"></span></p>
         <p>NAME: <span data-bind="text: name"></span></p>
         <p>EMAIL: <span data-bind="text: email"></span></p>
@@ -24,13 +26,13 @@
 
         <h2>Self discount code</h2>
         <div data-bind="with: self_discount">
-            <p>CODE: <a data-bind="attr: {href : '../discounts/discount.php?idDiscount='+id}"><span data-bind="text: discount_code"></span></a></p>
+            <p>CODE: <a data-bind="attr: {href : '../discounts/detail.php?idDiscount='+id}"><span data-bind="text: discount_code"></span></a></p>
             <!-- ko if: usages.length > 0 -->
                 <p>Usages:</p>
                 <!-- ko foreach: usages -->
                     <p>
                         <span data-bind="text: moment(created_at).format('YYYY-MM-DD')"></span>:
-                        <a data-bind="attr: {href : 'policy.php?idPolicy='+identifier}"><span data-bind="text: number"></span></a>
+                        <a data-bind="attr: {href : 'detail.php?idPolicy='+identifier}"><span data-bind="text: number"></span></a>
                     </p>
                 <!-- /ko -->
             <!-- /ko -->
@@ -39,9 +41,9 @@
         <!-- ko if: policy_discounts.length > 0 -->
             <h2>Discounts</h2>
             <!-- ko foreach: policy_discounts -->
-                <p>CODE: <a data-bind="attr: {href : '../discounts/discount.php?idDiscount='+discount.id}"><span data-bind="text: discount.discount_code"></span></a></p>
+                <p>CODE: <a data-bind="attr: {href : '../discounts/detail.php?idDiscount='+discount.id}"><span data-bind="text: discount.discount_code"></span></a></p>
                 <p>PERCENTAGE: <span data-bind="text: discount_percentage"></span></p>
-                <p>POLICY: <a data-bind="attr: {href : 'policy.php?idPolicy='+discount.policy.identifier}"><span data-bind="text: discount.policy.number"></span></a></p>
+                <p>POLICY: <a data-bind="attr: {href : 'detail.php?idPolicy='+discount.policy.identifier}"><span data-bind="text: discount.policy.number"></span></a></p>
                 <p>START: <span data-bind="text: moment(validity_start).format('YYYY-MM-DD')"></span></p>
                 <p>END: <span data-bind="text: moment(validity_end).format('YYYY-MM-DD')"></span></p>
                 <hr />
@@ -146,12 +148,12 @@
         <br />
     </div>
 
-	<a class="btn btn-primary" href="policies.php">Cancel</a>
+	<a class="btn btn-primary" href="list.php">Cancel</a>
 	<?php include "../common/menu.php"?>
 </body>
 
 <?php include "../common/footer.php"?>
-<script type="text/javascript" src="js/policy.js"></script>
+<script type="text/javascript" src="js/detail.js"></script>
 
 </html>
 

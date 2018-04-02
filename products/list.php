@@ -16,13 +16,13 @@
 		<tbody data-bind="foreach: products">
 			<tr>
 				<td>
-                    <a data-bind="attr: {href : 'product.php?idProduct='+id}">
+                    <a data-bind="attr: {href : 'detail.php?idProduct='+id}">
                         <span data-bind="text: id"></span>
                     </a>
                 </td>
 				<td><span data-bind="text: active"></span></td>
 				<td>
-					<a data-bind="attr: {href : 'product.php?idProduct='+id}">
+					<a data-bind="attr: {href : 'detail.php?idProduct='+id}">
 						<span data-bind="text: name"></span>
 					</a>
 				</td>
@@ -34,7 +34,7 @@
 </body>
 
 <?php include "../common/footer.php"?>
-<script type="text/javascript" src="js/products.js"></script>
+<script type="text/javascript" src="js/list.js"></script>
 
 </html>
 

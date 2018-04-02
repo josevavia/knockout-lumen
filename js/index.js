@@ -15,7 +15,7 @@ function LoginViewModel() {
             password: self.password()
         }
         api.login(params, function(r) {
-            location.href = 'users/users.php';
+            location.href = 'users/list.php';
         }, function(r) {
             console.log(r);
         });
@@ -29,7 +29,7 @@ function LoginViewModel() {
     };
 
     self.currentUserId = function() {
-        let item = JSON.parse(sessionStorage.getItem('user'));
+        var item = JSON.parse(sessionStorage.getItem('user'));
         if (item) {
             return item.id;
         }

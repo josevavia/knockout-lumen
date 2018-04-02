@@ -20,7 +20,7 @@
                 </td>
 				<td><span data-bind="text: discount_percentage"></span></td>
 				<td>
-					<a data-bind="attr: {href : 'discount.php?idDiscount='+id}">
+					<a data-bind="attr: {href : 'detail.php?idDiscount='+id}">
 						<span data-bind="text: discount_code"></span>
 					</a>
 				</td>
@@ -32,7 +32,7 @@
 </body>
 
 <?php include "../common/footer.php"?>
-<script type="text/javascript" src="js/discounts.js"></script>
+<script type="text/javascript" src="js/list.js"></script>
 
 </html>
 

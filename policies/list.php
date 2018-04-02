@@ -9,6 +9,7 @@
 		<thead>
 		<tr>
 			<td>Number</td>
+			<td>Store</td>
 			<td>Name</td>
 			<td>Email</td>
 			<td>Product</td>
@@ -22,10 +23,11 @@
 		<tbody data-bind="foreach: policies">
 			<tr>
 				<td>
-					<a data-bind="attr: {href : 'policy.php?idPolicy='+identifier}">
+					<a data-bind="attr: {href : 'detail.php?idPolicy='+identifier}">
 						<span data-bind="text: number"></span>
 					</a>
 				</td>
+				<td><span data-bind="text: store.name"></span></td>
 				<td><span data-bind="text: name"></span></td>
 				<td><span data-bind="text: email"></span></td>
 				<td><span data-bind="text: product.name"></span></td>
@@ -38,13 +40,13 @@
 		</tbody>
 	</table>
 
-	<a href="create_policy.php" class="btn btn-primary">Create policy</a>
+	<a href="create.php" class="btn btn-primary">Create policy</a>
 
 	<?php include "../common/menu.php"?>
 </body>
 
 <?php include "../common/footer.php"?>
-<script type="text/javascript" src="js/policies.js"></script>
+<script type="text/javascript" src="js/list.js"></script>
 
 </html>
 

@@ -2,14 +2,15 @@ function EditUserViewModel() {
     var self = this;
 
     self.id = ko.observable();
-    self.username = ko.observable();
-    self.api_token = ko.observable();
+    self.name = ko.observable();
+    self.alias = ko.observable();
+    self.email = ko.observable();
 
     self.currentUser = ko.observable();
 
     self.init = function() {
         self.checkUser();
-        self.getUser();
+        self.getStore();
     }
 
     // check connected user
@@ -29,23 +30,25 @@ function EditUserViewModel() {
         });
     };
 
-    self.getUser = function() {
+    self.getStore = function() {
         var api = new Sumbroker();
-        var user_id = (new URLSearchParams(window.location.search)).get('idUser');
-        api.getUser(user_id, function(r) {
+        var id = (new URLSearchParams(window.location.search)).get('id');
+        api.getStore(id, function(r) {
             self.id(r.id);
-            self.username(r.username);
-            self.api_token(r.api_token);
+            self.name(r.name);
+            self.alias(r.alias);
+            self.email(r.user.email);
         });
     }
 
-    self.updateUser = function() {
+    self.save = function() {
         var api = new Sumbroker();
         var params = {
-            username: self.username(),
+            name: self.name(),
+            alias: self.alias(),
         };
-        api.updateUser(self.id(), params, function() {
-            location.href = 'users.php';
+        api.updateStore(self.id(), params, function() {
+            location.href = 'list.php';
         });
     }
 

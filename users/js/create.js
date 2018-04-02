@@ -1,15 +1,13 @@
-function UserViewModel() {
+function CreateUserViewModel() {
     var self = this;
 
-    self.id = ko.observable();
-    self.username = ko.observable();
-    self.api_token = ko.observable();
+    self.email = ko.observable();
+    self.password = ko.observable();
 
     self.currentUser = ko.observable();
 
     self.init = function() {
         self.checkUser();
-        self.getUser();
     }
 
     // check connected user
@@ -29,13 +27,14 @@ function UserViewModel() {
         });
     };
 
-    self.getUser = function() {
+    self.createUser = function() {
         var api = new Sumbroker();
-        var user_id = (new URLSearchParams(window.location.search)).get('idUser');
-        api.getUser(user_id, function(r) {
-            self.id(r.id);
-            self.username(r.username);
-            self.api_token(r.api_token);
+        var params = {
+            email: self.email(),
+            password: self.password(),
+        };
+        api.createUser(params, function(r) {
+            location.href = 'list.php';
         });
     }
 
@@ -47,4 +46,4 @@ function UserViewModel() {
 }
 
 // Activates knockout.js
-ko.applyBindings(new UserViewModel());
+ko.applyBindings(new CreateUserViewModel());

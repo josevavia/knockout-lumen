@@ -3,7 +3,7 @@
 <?php include "common/header.php"?>
 
 <body class="text-center">
-	<form class="form-signin" data-bind="submit: doLogin, visible: currentUserId() == null">
+	<form class="form-signin" data-bind="submit: doLogin">
 		<h1 class="h3 mb-3 font-weight-normal">Welcome!</h1>
 
 		<input type="text" id="username" class="form-control" placeholder="User name" required autofocus data-bind="value: username">
