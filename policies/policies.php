@@ -13,6 +13,7 @@
 			<td>Email</td>
 			<td>Product</td>
 			<td>Price</td>
+			<td>Periodicity</td>
 			<td>Status</td>
 			<td>Created at</td>
 			<td>Updated at</td>
@@ -29,6 +30,7 @@
 				<td><span data-bind="text: email"></span></td>
 				<td><span data-bind="text: product.name"></span></td>
 				<td><span data-bind="text: price_total"></span></td>
+				<td><span data-bind="text: periodicity"></span></td>
 				<td><span data-bind="text: status"></span></td>
 				<td><span data-bind="text: created_at"></span></td>
 				<td><span data-bind="text: updated_at"></span></td>

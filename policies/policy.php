@@ -24,7 +24,7 @@
 
         <h2>Self discount code</h2>
         <div data-bind="with: self_discount">
-            <p>CODE: <span data-bind="text: discount_code"></span></p>
+            <p>CODE: <a data-bind="attr: {href : '../discounts/discount.php?idDiscount='+id}"><span data-bind="text: discount_code"></span></a></p>
             <!-- ko if: usages.length > 0 -->
                 <p>Usages:</p>
                 <!-- ko foreach: usages -->
@@ -41,9 +41,10 @@
             <!-- ko foreach: policy_discounts -->
                 <p>CODE: <a data-bind="attr: {href : '../discounts/discount.php?idDiscount='+discount.id}"><span data-bind="text: discount.discount_code"></span></a></p>
                 <p>PERCENTAGE: <span data-bind="text: discount_percentage"></span></p>
-                <p>POLICY: <a data-bind="attr: {href : 'policy.php?idPolicy='+policy.identifier}"><span data-bind="text: policy.number"></span></a></p>
+                <p>POLICY: <a data-bind="attr: {href : 'policy.php?idPolicy='+discount.policy.identifier}"><span data-bind="text: discount.policy.number"></span></a></p>
                 <p>START: <span data-bind="text: moment(validity_start).format('YYYY-MM-DD')"></span></p>
                 <p>END: <span data-bind="text: moment(validity_end).format('YYYY-MM-DD')"></span></p>
+                <hr />
             <!-- /ko -->
         <!-- /ko -->
 
@@ -107,6 +108,7 @@
                 <td>CECA_CARD_FIRST_NUMBERS</td>
                 <td>CECA_CARD_LAST_NUMBERS</td>
                 <td>CECA_CARD_EXPIRATION</td>
+                <td>CECA_CARD_TOKEN</td>
                 <td></td>
             </tr>
             <!-- ko foreach: policy_payments -->
@@ -124,6 +126,7 @@
                 <td><span data-bind="text: ceca_card_first_numbers"></span></td>
                 <td><span data-bind="text: ceca_card_last_numbers"></span></td>
                 <td><span data-bind="text: ceca_card_expiration"></span></td>
+                <td><span data-bind="text: ceca_card_token"></span></td>
                 <td>
                     <!-- ko if: !payment_date -->
                     <button class="btn btn-default" data-bind="click: function(data, event) { $parents[1].payPayment($parent.identifier, identifier, $parent.identifier, identifier) }">Mark as paid</button>
