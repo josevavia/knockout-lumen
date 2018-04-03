@@ -13,7 +13,8 @@ require "common/functions.php"
 
     <div class="row">
 
-        <div class="col-md-2">
+        <div class="col-md-2 text-center" id="menu">
+            <div data-bind="text: user().name"></div>
             <a class="btn btn-default btn-block" href="<?=base_url()?>policies/list.php">Policies</a>
             <a class="btn btn-default btn-block" href="<?=base_url()?>stores/list.php">Stores</a>
             <a class="btn btn-default btn-block" href="<?=base_url()?>distributors/list.php">Distributors</a>
@@ -24,10 +25,10 @@ require "common/functions.php"
             <a class="btn btn-default btn-block" href="<?=base_url()?>discounts/list.php">Discounts</a>
             */ ?>
             <hr />
-            <button class="btn btn-default btn-block" data-bind="click: logout, visible: currentUserId() > 0">Logout</button>
+            <button class="btn btn-default btn-block" data-bind="click: logout">Logout</button>
         </div>
 
-        <div class="col-md-10">
+        <div class="col-md-10" id="content">
             <?=$content?>
         </div>
 

@@ -13,8 +13,6 @@
         <a data-bind="attr: {href : '../policies/detail.php?id='+identifier}"><span data-bind="text: number"></span></a>
     </p>
     <!-- /ko -->
-
-	<?php include "../common/menu.php"?>
 </div>
 
 <?php require "../layout.php"?>

@@ -29,31 +29,11 @@ function CreatePolicyViewModel() {
     self.expiration = ko.observable("201812");
     self.cvv2 = ko.observable("989");
 
-    self.currentUser = ko.observable();
-
     self.init = function() {
-        self.checkUser();
         self.getProducts();
         self.getCategories();
         self.getStores();
     }
-
-    // check connected user
-    self.checkUser = function() {
-        var user = JSON.parse(sessionStorage.getItem('user'));
-        if (!user) {
-            location.href = '../index.php';
-            return null;
-        }
-        self.currentUser(user);
-    }
-
-    self.logout = function() {
-        var api = new Sumbroker();
-        api.logout(function() {
-            location.href = '../index.php';
-        });
-    };
 
     self.parseParams = function() {
         var idStore = (new URLSearchParams(window.location.search)).get('idStore');
@@ -86,24 +66,7 @@ function CreatePolicyViewModel() {
 
     self.createPolicy = function() {
         var api = new Sumbroker();
-        var params = {
-            store_id: self.store_id(),
-            product_id: self.product_id(),
-            product_category_id: self.product_category_id(),
-            name: self.name(),
-            email: self.email(),
-            phone_number: self.phone_number(),
-            id_number: self.id_number(),
-            periodicity: self.periodicity(),
-            discount_code: self.discount_code(),
-            imei: self.imei(),
-            purchase_date: self.purchase_date(),
-            purchase_price: self.purchase_price(),
-            model: self.model(),
-            pan: self.pan(),
-            expiration: self.expiration(),
-            cvv2: self.cvv2(),
-        };
+        var params = self.getParams();
         api.createPolicy(params, function(r) {
             console.log(r);
             location.href = 'detail.php?id='+r.policy.identifier;
@@ -112,24 +75,7 @@ function CreatePolicyViewModel() {
 
     self.createPolicyAndPayTPV = function() {
         var api = new Sumbroker();
-        var params = {
-            store_id: 1,
-            product_id: self.product_id(),
-            product_category_id: self.product_category_id(),
-            name: self.name(),
-            email: self.email(),
-            phone_number: self.phone_number(),
-            id_number: self.id_number(),
-            periodicity: self.periodicity(),
-            discount_code: self.discount_code(),
-            imei: self.imei(),
-            purchase_date: self.purchase_date(),
-            purchase_price: self.purchase_price(),
-            model: self.model(),
-            pan: self.pan(),
-            expiration: self.expiration(),
-            cvv2: self.cvv2(),
-        };
+        var params = self.getParams();
         api.createPolicy(params, function(r) {
             console.log(r);
             $('#divForm').html(r.form);
@@ -139,7 +85,17 @@ function CreatePolicyViewModel() {
 
     self.createPolicyAndPayManual = function() {
         var api = new Sumbroker();
-        var params = {
+        var params = self.getParams();
+        api.createPolicy(params, function(r) {
+            console.log(r);
+            api.payPayment(r.policy.identifier, r.policy.policy_payments[0].identifier, [], function() {
+                location.href = 'detail.php?id='+r.policy.identifier;
+            });
+        });
+    }
+
+    self.getParams = function() {
+        return {
             store_id: 1,
             product_id: self.product_id(),
             product_category_id: self.product_category_id(),
@@ -157,12 +113,6 @@ function CreatePolicyViewModel() {
             expiration: self.expiration(),
             cvv2: self.cvv2(),
         };
-        api.createPolicy(params, function(r) {
-            console.log(r);
-            api.payPayment(r.policy.identifier, r.policy.policy_payments[0].identifier, [], function() {
-                location.href = 'detail.php?id='+r.policy.identifier;
-            });
-        });
     }
 
     self.updatePrice = function() {
@@ -178,12 +128,8 @@ function CreatePolicyViewModel() {
         });
     }
 
-    self.currentUserId = function() {
-        return JSON.parse(sessionStorage.getItem('user')).id;
-    }
-
     self.init();
 }
 
 // Activates knockout.js
-ko.applyBindings(new CreatePolicyViewModel());
+ko.applyBindings(new CreatePolicyViewModel(), document.getElementById('content'));

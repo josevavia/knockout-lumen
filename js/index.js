@@ -1,7 +1,7 @@
 function LoginViewModel() {
     var self = this;
 
-    self.username = ko.observable("admin");
+    self.username = ko.observable("admin@sumbroker.es");
     self.password = ko.observable("1234");
 
     self.init = function() {
@@ -21,23 +21,8 @@ function LoginViewModel() {
         });
     }
 
-    self.logout = function() {
-        var api = new Sumbroker();
-        api.logout(function() {
-            location.href = 'index.php';
-        });
-    };
-
-    self.currentUserId = function() {
-        var item = JSON.parse(sessionStorage.getItem('user'));
-        if (item) {
-            return item.id;
-        }
-        return null;
-    }
-
     self.init();
 }
 
 // Activates knockout.js
-ko.applyBindings(new LoginViewModel());
+ko.applyBindings(new LoginViewModel(), document.getElementById('content'));
