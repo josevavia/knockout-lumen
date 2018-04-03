@@ -42,6 +42,7 @@
         </tr>
         </tbody>
     </table>
+    <a class="btn btn-primary" data-bind="attr: {href : '../stores/create.php?idDistributor='+identifier}">New store</a>
 
     <h2>Policies</h2>
     <table class="table" data-bind="visible: policies.length > 0">
@@ -78,7 +79,6 @@
         </tr>
         </tbody>
     </table>
-    <a class="btn btn-primary" data-bind="attr: {href : '../stores/create.php?idDistributor='+identifier}">New store</a>
 </div>
 
 <?php require "../layout.php"?>
