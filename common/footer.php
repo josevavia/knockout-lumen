@@ -3,5 +3,7 @@
 <?php } else { ?>
     <script type="text/javascript" src="http://api.tuseguromovil.es/js/v1/api.js"></script>
 <?php } ?>
-<script type="text/javascript" src="<?=base_url()?>/common/js/footer.js"></script>
-
+<!--
+<script type="text/javascript" src="<?=base_url()?>/common/js/jquery.oauth.js"></script>
+-->
+<script type="text/javascript" src="<?=base_url()?>/common/js/common.js"></script>

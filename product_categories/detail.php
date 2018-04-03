@@ -1,19 +1,11 @@
-<html>
+<?php ob_start(); ?>
 
-<?php include "../common/header.php"?>
+<p>ID: <span data-bind="text: id"></span></p>
+<p>NAME: <span data-bind="text: name"></span></p>
 
-<body class="text-center">
+<a class="btn btn-primary" data-bind="attr: {href : 'edit.php?idProductCategory='+id()}">Edit product_category</a>
 
-	<p>ID: <span data-bind="text: id"></span></p>
-	<p>NAME: <span data-bind="text: name"></span></p>
+<?php require "../layout.php"?>
 
-	<a class="btn btn-primary" href="list.php">Cancel</a>
-	<a class="btn btn-primary" data-bind="attr: {href : 'edit.php?idProductCategory='+id()}">Edit product_category</a>
-	<?php include "../common/menu.php"?>
-</body>
-
-<?php include "../common/footer.php"?>
 <script type="text/javascript" src="js/product_category.js"></script>
-
-</html>
 

@@ -1,8 +1,6 @@
-<html>
+<?php ob_start(); ?>
 
-<?php include "../common/header.php"?>
-
-<body class="text-center" data-bind="with: discount">
+<div data-bind="with: discount">
 
 	<p>ID: <span data-bind="text: id"></span></p>
 	<p>IDENTIFIER: <span data-bind="text: identifier"></span></p>
@@ -16,12 +14,10 @@
     </p>
     <!-- /ko -->
 
-	<a class="btn btn-primary" href="list.php">Cancel</a>
 	<?php include "../common/menu.php"?>
-</body>
+</div>
 
-<?php include "../common/footer.php"?>
+<?php require "../layout.php"?>
+
 <script type="text/javascript" src="js/detail.js"></script>
-
-</html>
 

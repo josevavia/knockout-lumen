@@ -1,6 +1,11 @@
-<html>
+<?php
 
-<?php include "common/header.php"?>
+require "common/functions.php"
+
+?>
+
+<html>
+<?php require "common/header.php"?>
 
 <body class="text-center">
 	<form class="form-signin" data-bind="submit: doLogin">
@@ -11,10 +16,9 @@
 		<input type="password" id="password" class="form-control" placeholder="Password" required data-bind="value: password">
 		<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
 	</form>
-    <?php include "common/menu.php"?>
 </body>
 
-<?php include "common/footer.php"?>
+<?php require "common/footer.php"?>
 <script type="text/javascript" src="js/index.js"></script>
 
 </html>
