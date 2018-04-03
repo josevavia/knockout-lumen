@@ -38,7 +38,7 @@ function CreateStoreViewModel() {
             distributor_id: self.distributor_id(),
         };
         api.createStore(params, function(r) {
-            location.href = 'detail.php?id='+r.id;
+            location.href = 'detail.php?id='+r.identifier;
         });
     }
 

@@ -18,7 +18,7 @@ function CreateDistributorViewModel() {
             password: self.password(),
         };
         api.createDistributor(params, function(r) {
-            location.href = 'detail.php?id='+r.id;
+            location.href = 'detail.php?id='+r.identifier;
         });
     }
 
