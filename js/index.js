@@ -2,7 +2,7 @@ function LoginViewModel() {
     var self = this;
 
     self.username = ko.observable("admin@sumbroker.es");
-    self.password = ko.observable("1234");
+    self.password = ko.observable("sumbrok3r_1234");
 
     self.init = function() {
     }
