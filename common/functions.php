@@ -6,5 +6,8 @@ function isLocalhost() {
 }
 
 function base_url() {
-	return 'http://localhost/testapi/';
+	if (isLocalhost()) {
+		return 'http://localhost/testapi/';
+	}
+	return 'http://espacio.josevavia.es';
 }
