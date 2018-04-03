@@ -96,7 +96,7 @@ function CreatePolicyViewModel() {
 
     self.getParams = function() {
         return {
-            store_id: 1,
+            store_id: self.store_id(),
             product_id: self.product_id(),
             product_category_id: self.product_category_id(),
             name: self.name(),
